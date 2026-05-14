@@ -1,7 +1,7 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { lazy, Suspense } from "react";
+
 import { Toaster } from "sonner";
 import { ContentProvider } from "./lib/content";
 import Header from "./components/Header";
@@ -11,17 +11,16 @@ import RequireAdmin from "./components/RequireAdmin";
 import FloatingActions from "./components/FloatingActions";
 import EmiBanner from "./components/EmiBanner";
 
-// Lazy-loaded routes for performance
-const Services = lazy(() => import("./pages/Services"));
-const Cities = lazy(() => import("./pages/Cities"));
-const CityPage = lazy(() => import("./pages/CityPage"));
-const BrandPage = lazy(() => import("./pages/BrandPage"));
-const Book = lazy(() => import("./pages/Book"));
-const About = lazy(() => import("./pages/About"));
-const FAQ = lazy(() => import("./pages/FAQ"));
-const AdminLogin = lazy(() => import("./pages/AdminLogin"));
-const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+import Services from "./pages/Services";
+import Cities from "./pages/Cities";
+import CityPage from "./pages/CityPage";
+import BrandPage from "./pages/BrandPage";
+import Book from "./pages/Book";
+import About from "./pages/About";
+import FAQ from "./pages/FAQ";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,9 +34,7 @@ function Shell({ children, plain = false }) {
       {!plain && <EmiBanner />}
       {!plain && <Header />}
       <main className="min-h-[60vh] pb-16">
-        <Suspense fallback={<div className="h-[50vh] flex items-center justify-center text-slate-400">Loading...</div>}>
-          {children}
-        </Suspense>
+        {children}
       </main>
       {!plain && <Footer />}
       {!plain && <FloatingActions />}
