@@ -35,9 +35,9 @@ export default function InlineEnquiryForm() {
       toast.success("Request received. We'll call you in minutes.");
       setTimeout(() => {
         const text = `*Hi MobileMistri, I need a repair.*\n
-*Name:* ${form.name}\n
-*Phone:* ${form.phone}\n
-*Device:* ${form.brand} ${isOtherModel && form.custom_model ? form.custom_model : form.model}\n
+*Name:* ${form.name}
+*Phone:* ${form.phone}
+*Device:* ${form.brand} ${isOtherModel && form.custom_model ? form.custom_model : form.model}
 *Issue:* ${form.issue}`;
         window.location.href = `https://wa.me/919650061347?text=${encodeURIComponent(text)}`;
       }, 1500);
