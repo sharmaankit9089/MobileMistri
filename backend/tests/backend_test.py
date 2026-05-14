@@ -40,7 +40,7 @@ class TestPublic:
         assert r.status_code == 200
         d = r.json()
         assert len(d["brands"]) == 9, f"expected 9 brands, got {len(d['brands'])}"
-        assert len(d["cities"]) == 9
+        assert len(d["cities"]) == 10
         assert len(d["services"]) == 9, f"expected 9 services, got {len(d['services'])}"
         # verify Logic Board service exists
         svc_slugs = [s["slug"] for s in d["services"]]
