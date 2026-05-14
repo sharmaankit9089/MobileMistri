@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mm-navy: #002FA7;          /* primary royal blue (IKB) */
+  --mm-navy-2: #00227A;        /* darker hover */
+  --mm-orange: #002FA7;        /* CTA — same as primary (matches reference) */
+  --mm-orange-dark: #00227A;
+  --mm-accent-bg: #EEF2FF;     /* soft tint for icon squares */
+  --mm-bg: #FFFFFF;
+  --mm-surface: #FFFFFF;
+  --mm-border: #E4E4E7;        /* zinc-200 */
+  --mm-text: #18181B;          /* zinc-900 */
+  --mm-muted: #71717A;         /* zinc-500 */
+}
+
+html, body {
+  margin: 0;
+  background: var(--mm-bg);
+  color: var(--mm-text);
+  font-family: 'Figtree', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Outfit', 'Figtree', sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+
+.label-kicker {
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mm-navy);
+}
+
+/* Shadcn tokens — mapped to reference brand */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 6% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 6% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+    --primary: 226 100% 33%;       /* #002FA7 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+    --accent: 226 100% 33%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 226 100% 33%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground; }
+}
+
+/* Card hover like reference */
+.mm-card {
+  background: #fff;
+  border: 1px solid var(--mm-border);
+  border-radius: 16px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.mm-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px -16px rgba(0, 47, 167, 0.2);
+  border-color: var(--mm-navy);
+}
+
+/* CTA pills */
+@layer components {
+  .mm-btn-primary {
+    background: var(--mm-navy);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background .15s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .mm-btn-primary:hover { background: var(--mm-navy-2); }
+
+  .mm-btn-secondary {
+    background: #fff;
+    color: var(--mm-text);
+    border: 2px solid var(--mm-border);
+    padding: 12px 30px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: all .15s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .mm-btn-secondary:hover { border-color: var(--mm-navy); color: var(--mm-navy); }
+
+  .mm-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #fff;
+    color: #3f3f46;
+    border: 1px solid var(--mm-border);
+    transition: all .15s ease;
+    cursor: pointer;
+  }
+  .mm-chip:hover { border-color: var(--mm-navy); color: var(--mm-navy); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .6s ease both; }
+
+@layer base {
+  [data-debug-wrapper="true"] { display: contents !important; }
+}
