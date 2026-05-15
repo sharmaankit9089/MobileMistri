@@ -1,8 +1,249 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ═══════════════ CORE PAGES ═══════════════ -->
   <url>
     <loc>https://www.mobilemistri.com/</loc>
+    <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://www.mobilemistri.com/book</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/services</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/cities</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/about</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/faq</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ═══════════════ CITY PAGES ═══════════════ -->
+  <url>
+    <loc>https://www.mobilemistri.com/city/delhi</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/noida</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/gurgaon</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/hyderabad</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/bangalore</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/mumbai</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/ghaziabad</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/faridabad</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/pune</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/city/chennai</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ══════════════ BRAND PAGES ═══════════════ -->
+  <url>
+    <loc>https://www.mobilemistri.com/brand/apple</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/samsung</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/oneplus</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/xiaomi</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/google-pixel</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/nothing</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/realme</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.mobilemistri.com/brand/motorola</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ══════════ CITY × BRAND COMBINATIONS ═══════════ -->
+  <!-- delhi -->
+  <url><loc>https://www.mobilemistri.com/city/delhi/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/delhi/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- noida -->
+  <url><loc>https://www.mobilemistri.com/city/noida/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/noida/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- gurgaon -->
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/gurgaon/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- hyderabad -->
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/hyderabad/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- bangalore -->
+  <url><loc>https://www.mobilemistri.com/city/bangalore/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/bangalore/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- mumbai -->
+  <url><loc>https://www.mobilemistri.com/city/mumbai/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/mumbai/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- ghaziabad -->
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/ghaziabad/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- faridabad -->
+  <url><loc>https://www.mobilemistri.com/city/faridabad/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/faridabad/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- pune -->
+  <url><loc>https://www.mobilemistri.com/city/pune/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/pune/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <!-- chennai -->
+  <url><loc>https://www.mobilemistri.com/city/chennai/apple</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/samsung</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/oneplus</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/xiaomi</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/google-pixel</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/nothing</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/realme</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.mobilemistri.com/city/chennai/motorola</loc><lastmod>2026-05-15</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
 </urlset>
