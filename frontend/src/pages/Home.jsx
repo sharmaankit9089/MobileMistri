@@ -180,7 +180,6 @@ export default function Home() {
                 alt="MobileMistri store with in-store repair counter and doorstep service technicians"
                 className="w-full h-auto block"
                 data-testid="brand-storefront-img"
-                loading="lazy"
               />
             </div>
             <div className="lg:col-span-2">

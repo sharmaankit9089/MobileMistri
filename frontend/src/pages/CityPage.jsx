@@ -1,15 +1,35 @@
 import { useParams, Link } from "react-router-dom";
 import { useContent } from "../lib/content";
+import { useSEO } from "../lib/useSEO";
 import EnquirySheet from "../components/EnquirySheet";
 import BrandIcon from "../components/BrandIcon";
-import { ShieldCheck, Clock4, BadgeIndianRupee, ArrowRight } from "lucide-react";
+import { ShieldCheck, Clock4, BadgeIndianRupee, ArrowRight, MapPin, Wrench } from "lucide-react";
+import { BRAND_SEO_DATA, CITY_SEO_DATA } from "../lib/seoContent";
 
 export default function CityPage() {
   const { city, brand } = useParams();
   const { content } = useContent();
+  const c = content?.cities?.find((x) => x.slug === city);
+  const b = brand && content ? content.brands.find((x) => x.slug === brand) : null;
+
+  const citySeo = c ? (CITY_SEO_DATA[c.slug] || { areas: [], local_text: "" }) : { areas: [], local_text: "" };
+  const brandSeo = b ? (BRAND_SEO_DATA[b.slug] || {}) : {};
+
+  const title = c ? (b ? `${b.name} repair in ${c.name}` : `Mobile repair in ${c.name}`) : "City Not Found";
+  const subtitle = c ? (b
+    ? `${brandSeo.premium_messaging || `Certified ${b.name} technicians in ${c.name}.`} Doorstep repair with genuine parts and 6–12 month warranty — delivered in 60-90 minutes.`
+    : `Doorstep mobile repair in ${c.name} — every major brand, every major model. Transparent pricing, verified experts, up to 12-month warranty.`) : "";
+
+  const seoTitle = c ? (b
+    ? `${b.name} Repair in ${c.name} | Doorstep Service | MobileMistri`
+    : `Mobile Repair in ${c.name} | Doorstep Service | MobileMistri`) : "City Not Found";
+  const canonical = c ? (b
+    ? `https://www.mobilemistri.com/city/${c.slug}/${b.slug}`
+    : `https://www.mobilemistri.com/city/${c.slug}`) : "";
+
+  useSEO({ title: seoTitle, description: subtitle, canonical });
+
   if (!content) return null;
-  const c = content.cities.find((x) => x.slug === city);
-  const b = brand ? content.brands.find((x) => x.slug === brand) : null;
   if (!c) return (
     <div className="max-w-3xl mx-auto p-20 text-center">
       <h1 className="font-display text-3xl text-slate-700">City not found</h1>
@@ -17,13 +37,54 @@ export default function CityPage() {
     </div>
   );
 
-  const title = b ? `${b.name} repair in ${c.name}` : `Mobile repair in ${c.name}`;
-  const subtitle = b
-    ? `Certified ${b.name} technicians in ${c.name}. Doorstep repair with genuine parts and 6–12 month warranty — delivered in 60-90 minutes.`
-    : `Doorstep mobile repair in ${c.name} — every major brand, every major model. Transparent pricing, verified experts, up to 12-month warranty.`;
+  // JSON-LD Schema
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": b ? `MobileMistri - ${b.name} Repair ${c.name}` : `MobileMistri - Mobile Repair ${c.name}`,
+    "image": "https://www.mobilemistri.com/logo.png",
+    "url": canonical,
+    "telephone": "+919650061347",
+    "areaServed": {
+      "@type": "City",
+      "name": c.name
+    },
+    "priceRange": "₹₹",
+    "brand": b ? b.name : "Multi-brand",
+    "description": subtitle
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": []
+  };
+
+  if (b && brandSeo.faq_q) {
+    faqSchema.mainEntity.push({
+      "@type": "Question",
+      "name": brandSeo.faq_q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": brandSeo.faq_a
+      }
+    });
+  }
+
+  faqSchema.mainEntity.push({
+    "@type": "Question",
+    "name": b ? `Do you provide ${b.name} doorstep repair in ${c.name}?` : `Do you provide doorstep mobile repair in ${c.name}?`,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": `Yes, we provide 60-90 minute doorstep repair across ${c.name}, including areas like ${citySeo.areas.slice(0, 3).join(", ")}.`
+    }
+  });
 
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-zinc-50 to-blue-50/40">
         <div className="absolute top-1/4 -right-20 w-96 h-96 rounded-full bg-[#002FA7]/5 blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -36,7 +97,7 @@ export default function CityPage() {
           <p className="mt-5 text-zinc-500 max-w-2xl text-lg">{subtitle}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <EnquirySheet
-              trigger={<button className="mm-btn-primary" data-testid="city-get-quote">Get free quote <ArrowRight className="h-4 w-4" /></button>}
+              trigger={<button className="mm-btn-primary" data-testid="city-get-quote">{brandSeo.cta || "Get free quote"} <ArrowRight className="h-4 w-4" /></button>}
               defaultValues={{ city: c.name, brand: b?.slug || "" }}
               source={`city-${c.slug}${b ? "-" + b.slug : ""}`}
             />
@@ -60,7 +121,26 @@ export default function CityPage() {
             </div>
           ))}
         </div>
+        <div className="mt-8 bg-[#EEF2FF] rounded-2xl p-6 text-[color:var(--mm-navy)] flex items-start gap-4">
+          <MapPin className="h-6 w-6 shrink-0 text-[color:var(--mm-orange)]" />
+          <p className="text-sm md:text-base">{citySeo.local_text} Our service areas include <strong>{citySeo.areas.join(", ")}</strong> and more.</p>
+        </div>
       </section>
+
+      {b && brandSeo.issues && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+          <div className="label-kicker">Expertise</div>
+          <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>{brandSeo.common_heading || `Common ${b.name} Issues We Fix in ${c.name}`}</h2>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {brandSeo.issues.map((issue, i) => (
+              <div key={i} className="mm-card p-5 border-l-4 border-l-[#FF5A00]">
+                <Wrench className="h-5 w-5 text-slate-400 mb-3" />
+                <div className="font-semibold text-[color:var(--mm-navy)]">{issue}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {!b && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
@@ -95,6 +175,19 @@ export default function CityPage() {
           </div>
         </section>
       )}
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="label-kicker">FAQ</div>
+        <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>{b ? `${b.name} Repair FAQs in ${c.name}` : `Common Questions`}</h2>
+        <div className="mt-8 space-y-4">
+          {faqSchema.mainEntity.map((faq, i) => (
+            <div key={i} className="mm-card p-6">
+              <h3 className="font-semibold text-lg text-[color:var(--mm-navy)]">{faq.name}</h3>
+              <p className="mt-2 text-slate-600">{faq.acceptedAnswer.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="label-kicker">Services in {c.name}</div>

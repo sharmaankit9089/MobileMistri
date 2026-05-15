@@ -1,13 +1,22 @@
 import { useParams, Link } from "react-router-dom";
 import { useContent } from "../lib/content";
+import { useSEO } from "../lib/useSEO";
 import BrandIcon from "../components/BrandIcon";
 import EnquirySheet from "../components/EnquirySheet";
-import { ShieldCheck, BadgeIndianRupee, Clock4, MapPin, ArrowRight } from "lucide-react";
+import { ShieldCheck, BadgeIndianRupee, Clock4, MapPin, ArrowRight, Wrench } from "lucide-react";
+import { BRAND_SEO_DATA } from "../lib/seoContent";
 
 export default function BrandPage() {
   const { brand } = useParams();
   const { content } = useContent();
   const b = content?.brands?.find((x) => x.slug === brand);
+  const brandSeo = b ? (BRAND_SEO_DATA[b.slug] || {}) : {};
+
+  useSEO({
+    title: b ? `${b.name} Repair at Doorstep | Genuine Parts | MobileMistri` : "Brand Not Found",
+    description: b ? `Certified ${b.name} technicians across Delhi, Mumbai, Bangalore & 7 more cities. OEM-grade parts, 6–12 month warranty, 60–90 min doorstep ETA. Book now.` : "",
+    canonical: b ? `https://www.mobilemistri.com/brand/${b.slug}` : "",
+  });
 
   if (!content) return null;
   if (!b) return (
@@ -17,8 +26,57 @@ export default function BrandPage() {
     </div>
   );
 
+  // JSON-LD Schema
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": `${b.name} Mobile Repair`,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "MobileMistri",
+      "image": "https://www.mobilemistri.com/logo.png"
+    },
+    "areaServed": content.cities.map(c => ({
+      "@type": "City",
+      "name": c.name
+    })),
+    "brand": {
+      "@type": "Brand",
+      "name": b.name
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": []
+  };
+
+  if (brandSeo.faq_q) {
+    faqSchema.mainEntity.push({
+      "@type": "Question",
+      "name": brandSeo.faq_q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": brandSeo.faq_a
+      }
+    });
+  }
+
+  faqSchema.mainEntity.push({
+    "@type": "Question",
+    "name": `Do you use genuine parts for ${b.name} repair?`,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": `Yes, we use OEM-grade genuine parts for all ${b.name} repairs. Every repair comes with a 6-12 month service warranty.`
+    }
+  });
+
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-zinc-50 to-blue-50/40">
         <div className="absolute top-1/4 -right-20 w-96 h-96 rounded-full bg-[#002FA7]/5 blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -34,11 +92,11 @@ export default function BrandPage() {
             </h1>
           </div>
           <p className="mt-5 text-zinc-500 max-w-2xl text-lg">
-            Certified {b.name} technicians, OEM-grade parts, and up to 12-month warranty — across Delhi, Mumbai, Bangalore and 6 more cities.
+            {brandSeo.premium_messaging || `Certified ${b.name} technicians, OEM-grade parts, and up to 12-month warranty — across Delhi, Mumbai, Bangalore and 6 more cities.`}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <EnquirySheet
-              trigger={<button className="mm-btn-primary" data-testid="brand-get-quote">Get {b.name} quote <ArrowRight className="h-4 w-4" /></button>}
+              trigger={<button className="mm-btn-primary" data-testid="brand-get-quote">{brandSeo.cta || `Get ${b.name} quote`} <ArrowRight className="h-4 w-4" /></button>}
               defaultValues={{ brand: b.slug }}
               source={`brand-${b.slug}`}
             />
@@ -65,6 +123,21 @@ export default function BrandPage() {
         </div>
       </section>
 
+      {brandSeo.issues && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+          <div className="label-kicker">Expertise</div>
+          <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>{brandSeo.common_heading || `Common ${b.name} Issues We Fix`}</h2>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+            {brandSeo.issues.map((issue, i) => (
+              <div key={i} className="mm-card p-5 border-l-4 border-l-[#002FA7]">
+                <Wrench className="h-5 w-5 text-slate-400 mb-3" />
+                <div className="font-semibold text-[color:var(--mm-navy)]">{issue}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="label-kicker">Models we service</div>
         <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>All {b.name} models ({b.models.length})</h2>
@@ -76,6 +149,19 @@ export default function BrandPage() {
               defaultValues={{ brand: b.slug, model: m }}
               source={`brand-${b.slug}-model`}
             />
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="label-kicker">FAQ</div>
+        <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>{b.name} Repair FAQs</h2>
+        <div className="mt-8 space-y-4">
+          {faqSchema.mainEntity.map((faq, i) => (
+            <div key={i} className="mm-card p-6">
+              <h3 className="font-semibold text-lg text-[color:var(--mm-navy)]">{faq.name}</h3>
+              <p className="mt-2 text-slate-600">{faq.acceptedAnswer.text}</p>
+            </div>
           ))}
         </div>
       </section>
