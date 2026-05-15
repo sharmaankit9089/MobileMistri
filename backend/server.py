@@ -8,13 +8,14 @@ import os
 import uuid
 import asyncio
 import logging
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timezone, timedelta, date
 from typing import List, Optional
 
 import bcrypt
 import jwt
 import resend
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, Request
+from fastapi.responses import Response
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
@@ -278,6 +279,124 @@ async def update_booking_status(bid: str, body: StatusUpdate, user=Depends(get_a
     if res.matched_count == 0:
         raise HTTPException(404, "Booking not found")
     return {"id": bid, "status": body.status}
+
+# ---------- seo: sitemap + robots ----------
+
+# Priority tiers for cities and brands
+_CITY_PRIORITY = {
+    "delhi": "0.9", "noida": "0.9", "gurgaon": "0.9",
+    "hyderabad": "0.9", "bangalore": "0.9", "mumbai": "0.9",
+}
+_BRAND_PRIORITY = {
+    "apple": "0.9", "samsung": "0.9",
+    "oneplus": "0.8", "xiaomi": "0.8", "google-pixel": "0.8",
+}
+_METRO_CITIES = {"delhi", "noida", "gurgaon", "hyderabad", "bangalore", "mumbai"}
+_TOP_BRANDS   = {"apple", "samsung"}
+_MID_BRANDS   = {"oneplus", "xiaomi", "google-pixel"}
+
+
+@app.get("/sitemap.xml", include_in_schema=False)
+async def sitemap():
+    today   = date.today().isoformat()
+    base    = "https://www.mobilemistri.com"
+    entries = []
+
+    def url(loc, priority, freq):
+        return (
+            f"  <url>\n"
+            f"    <loc>{loc}</loc>\n"
+            f"    <lastmod>{today}</lastmod>\n"
+            f"    <changefreq>{freq}</changefreq>\n"
+            f"    <priority>{priority}</priority>\n"
+            f"  </url>"
+        )
+
+    def url_inline(loc, priority, freq):
+        return (
+            f"  <url>"
+            f"<loc>{loc}</loc>"
+            f"<lastmod>{today}</lastmod>"
+            f"<changefreq>{freq}</changefreq>"
+            f"<priority>{priority}</priority>"
+            f"</url>"
+        )
+
+    # Core pages
+    core = [
+        ("/",        "1.0", "weekly"),
+        ("/book",    "0.9", "weekly"),
+        ("/services","0.9", "monthly"),
+        ("/cities",  "0.8", "monthly"),
+        ("/about",   "0.7", "monthly"),
+        ("/faq",     "0.7", "monthly"),
+    ]
+    entries.append("  <!-- CORE PAGES -->")
+    for path, pri, freq in core:
+        entries.append(url(f"{base}{path}", pri, freq))
+
+    # City pages
+    entries.append("\n  <!-- CITY PAGES -->")
+    for city in CITIES:
+        pri = _CITY_PRIORITY.get(city["slug"], "0.8")
+        entries.append(url(f"{base}/city/{city['slug']}", pri, "weekly"))
+
+    # Brand pages (exclude 'other')
+    entries.append("\n  <!-- BRAND PAGES -->")
+    for brand in BRANDS:
+        if brand["slug"] == "other":
+            continue
+        pri = _BRAND_PRIORITY.get(brand["slug"], "0.7")
+        entries.append(url(f"{base}/brand/{brand['slug']}", pri, "monthly"))
+
+    # City × Brand combinations (exclude 'other' brand)
+    entries.append("\n  <!-- CITY x BRAND PAGES -->")
+    for city in CITIES:
+        entries.append(f"  <!-- {city['name']} -->")
+        for brand in BRANDS:
+            if brand["slug"] == "other":
+                continue
+            cs, bs = city["slug"], brand["slug"]
+            if cs in _METRO_CITIES and bs in _TOP_BRANDS:
+                pri = "0.8"
+            elif cs in _METRO_CITIES and bs in _MID_BRANDS:
+                pri = "0.7"
+            else:
+                pri = "0.6"
+            entries.append(url_inline(f"{base}/city/{cs}/{bs}", pri, "monthly"))
+
+    xml = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+        '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n'
+        '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9\n'
+        '                            https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n'
+        + "\n".join(entries)
+        + "\n</urlset>"
+    )
+    return Response(content=xml, media_type="application/xml")
+
+
+@app.get("/robots.txt", include_in_schema=False)
+async def robots():
+    content = (
+        "# www.mobilemistri.com — robots.txt\n"
+        "\n"
+        "User-agent: *\n"
+        "Allow: /\n"
+        "\n"
+        "# Block admin section from indexing\n"
+        "Disallow: /admin\n"
+        "Disallow: /admin/\n"
+        "\n"
+        "# Block API and query strings\n"
+        "Disallow: /api/\n"
+        "Disallow: /*?*\n"
+        "\n"
+        "Sitemap: https://www.mobilemistri.com/sitemap.xml\n"
+    )
+    return Response(content=content, media_type="text/plain")
+
 
 # ---------- include + cors ----------
 app.include_router(api)
