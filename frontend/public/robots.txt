@@ -1,0 +1,15 @@
+# www.mobilemistri.com — robots.txt
+
+User-agent: *
+Allow: /
+
+# Block admin section from indexing
+Disallow: /admin
+Disallow: /admin/
+
+# Block query strings / utility paths
+Disallow: /api/
+Disallow: /*?*
+
+# Sitemap
+Sitemap: https://www.mobilemistri.com/sitemap.xml
