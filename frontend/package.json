@@ -67,6 +67,7 @@
   "reactSnap": {
     "inlineCss": false,
     "concurrency": 4,
+    "port": 45679,
     "puppeteerExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
     "puppeteerArgs": [
       "--no-sandbox",
