@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContent } from "../lib/content";
+import { useSEO } from "../lib/useSEO";
 import EnquirySheet from "../components/EnquirySheet";
 import BrandIcon from "../components/BrandIcon";
 import InlineEnquiryForm from "../components/InlineEnquiryForm";
@@ -15,11 +16,99 @@ const STATS = [
   { icon: Star, n: "4.9 ★", l: "Average Rating" },
 ];
 
+const LOCAL_BUSINESS_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.mobilemistri.com/#localbusiness",
+  "name": "MobileMistri",
+  "image": "https://www.mobilemistri.com/og-image.jpg",
+  "url": "https://www.mobilemistri.com/",
+  "telephone": "+919650061347",
+  "priceRange": "₹₹",
+  "description": "India's trusted doorstep mobile repair service. Expert technicians for iPhone, Samsung, OnePlus, Xiaomi, Google Pixel & more across 10 cities.",
+  "areaServed": [
+    "Delhi", "Noida", "Gurgaon", "Ghaziabad", "Faridabad",
+    "Hyderabad", "Bangalore", "Pune", "Mumbai", "Chennai"
+  ],
+  "serviceType": "Mobile Phone Repair",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "21:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "30000",
+    "bestRating": "5"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Mobile Repair Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Screen Replacement" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Battery Replacement" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Charging Port Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Water Damage Recovery" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Back Glass Replacement" } }
+    ]
+  }
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does doorstep mobile repair work?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Book via the form or call. Our verified technician reaches your doorstep within 60-90 minutes, diagnoses the issue in front of you, gives a transparent quote, and fixes it on-site in most cases." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you use genuine parts?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We use OEM/original-grade parts with a 6-12 month service warranty. The part grade is disclosed to you before repair begins." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the warranty on repairs?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Every repair carries a standardised 6-month service warranty. Screen & battery replacements carry a 12-month warranty on our Premium tier." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which cities do you serve?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Delhi, Noida, Gurgaon, Ghaziabad, Faridabad, Hyderabad, Bangalore, Pune, Mumbai, and Chennai — with more cities launching soon." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there any visit charge?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A small convenience fee may apply for doorstep visits — fully waived on confirmed repairs. The exact amount is shared with you upfront when you book." }
+    },
+    {
+      "@type": "Question",
+      "name": "How are technicians vetted?",
+      "acceptedAnswer": { "@type": "Answer", "text": "All technicians undergo background verification, in-house certification, and continuous training. Your data never leaves your phone and repairs happen in front of you." }
+    }
+  ]
+};
+
 export default function Home() {
   const { content } = useContent();
 
+  useSEO({
+    title: "MobileMistri — Doorstep Mobile Repair in Delhi, Mumbai, Bangalore & 10 Cities",
+    description: "Expert doorstep mobile repair for iPhone, Samsung, OnePlus, Xiaomi & more. Verified technicians reach your home in 60–90 min. Genuine parts, 6–12 month warranty, transparent pricing.",
+    canonical: "https://www.mobilemistri.com/",
+  });
+
   return (
-    <div>
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(LOCAL_BUSINESS_SCHEMA) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+      <div>
       {/* HERO — white bg with soft blue blobs, reference-style */}
       <section className="pt-8 min-h-[90vh] flex flex-col justify-center relative overflow-hidden" data-testid="hero-section">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-zinc-50 to-blue-50/40" />
@@ -37,7 +126,7 @@ export default function Home() {
                 <span className="text-[#002FA7]">Your Doorstep.</span>
               </h1>
               <p className="text-lg text-zinc-500 mb-8 leading-relaxed max-w-lg">
-                Expert mobile repair at your home or office. Best Mobile Care At Home — Screen, battery, back glass, water damage. Genuine parts. Transparent pricing. 6–12 month warranty.
+                Expert mobile repair at your home or office. Best Mobile Care At Home — Screen replacement, battery repair, back glass, water damage. Genuine parts. Transparent pricing. 6–12 month warranty.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mb-8">
                 <Link to="/book" className="mm-btn-primary" data-testid="hero-book-btn">
@@ -185,10 +274,10 @@ export default function Home() {
             <div className="lg:col-span-2">
               <p className="label-kicker mb-2">See us in action</p>
               <h2 className="font-display text-3xl sm:text-4xl text-zinc-900 mb-4">
-                Walk in. Or let us <span className="text-[#002FA7]">walk to you.</span>
+                Walk into our repair center. Or let us <span className="text-[#002FA7]">walk to you.</span>
               </h2>
               <p className="text-zinc-600 leading-relaxed mb-6">
-                MobileMistri runs a hybrid network of neatly-branded <b>Support Hubs</b> for walk-in &amp; while-you-wait repairs, plus a rapid <b>Doorstep Service</b> fleet that reaches your home or office in 60–90 minutes. Same genuine parts. Same warranty. Your choice of convenience.
+                MobileMistri runs a hybrid network of neatly-branded <b>Mobile Repair Hubs</b> for walk-in &amp; while-you-wait repairs, plus a rapid <b>Doorstep Mobile Service</b> fleet that reaches your home or office in 60–90 minutes. Same genuine parts. Same mobile repair warranty. Your choice of convenience.
               </p>
               <ul className="space-y-3 text-sm text-zinc-700">
                 <li className="flex items-start gap-3"><CircleCheck className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" /> <span><b>In-Store Repairs</b> — screen, battery, charging port, back glass, water damage fixed while you wait</span></li>
@@ -208,7 +297,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="label-kicker mb-2">Service Areas</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-zinc-900 mb-3">Serving 9 Major Indian Cities</h2>
+            <h2 className="font-display text-3xl sm:text-4xl text-zinc-900 mb-3">Serving 10 Major Indian Cities</h2>
             <p className="text-zinc-500 text-base max-w-md mx-auto">Doorstep repair available across Delhi NCR, South India, and West India. Expanding rapidly.</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -261,6 +350,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SEO ARTICLE CONTENT */}
+      <section className="py-20 bg-zinc-50 border-t border-zinc-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto prose prose-slate">
+            <h2 className="text-3xl font-display text-zinc-900 mb-6">India's Most Trusted Doorstep Mobile Repair Service</h2>
+            <p className="text-zinc-600 mb-4">
+              In today's fast-paced digital world, a broken smartphone can bring your entire day to a halt. We understand the urgency of getting your device back online. <strong>MobileMistri</strong> is India's leading doorstep mobile repair service, offering same-day smartphone repair near you. Whether you are dealing with a shattered screen, a rapidly draining battery, a malfunctioning charging port, or even severe liquid damage, our certified mobile mechanics are equipped to handle it all right in front of your eyes.
+            </p>
+            <p className="text-zinc-600 mb-4">
+              Our mobile repair network spans across 10 major Indian cities including Delhi, Noida, Gurgaon, Bangalore, Mumbai, Pune, and Hyderabad. By bringing the mobile service center to you, we eliminate the hassle of commuting through traffic and waiting for days to get your cell phone fixed. We specialize in mobile repairing for all major brands such as <strong>Apple iPhone, Samsung Galaxy, OnePlus, Xiaomi, Google Pixel, Motorola, and Realme</strong>. 
+            </p>
+            <h3 className="text-2xl font-display text-zinc-900 mt-8 mb-4">Why MobileMistri is the Industry Standard for Phone Repair</h3>
+            <p className="text-zinc-600 mb-4">
+              Security and trust are at the core of our phone repair operations. When you hand over your phone at a local repair shop, your private data is often at risk. With our on-site mobile repair model, 100% of the phone repair process happens right in front of you, ensuring complete data privacy. We exclusively use premium, OEM-grade replacement parts, allowing us to confidently back every mobile screen and battery replacement with a comprehensive 6 to 12-month service warranty. Furthermore, our "No Fix, No Fee" policy guarantees that you only pay when your cell phone is successfully restored. Experience the future of mobile repairing—book an appointment today and get your smartphone fixed in under 90 minutes.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA — full blue */}
       <section className="py-20 bg-[#002FA7]">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -276,6 +384,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

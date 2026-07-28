@@ -15,6 +15,7 @@ import Services from "./pages/Services";
 import Cities from "./pages/Cities";
 import CityPage from "./pages/CityPage";
 import BrandPage from "./pages/BrandPage";
+import ModelPage from "./pages/ModelPage";
 import Book from "./pages/Book";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
@@ -55,6 +56,8 @@ function App() {
           <Route path="/city/:city" element={<Shell><CityPage /></Shell>} />
           <Route path="/city/:city/:brand" element={<Shell><CityPage /></Shell>} />
           <Route path="/brand/:brand" element={<Shell><BrandPage /></Shell>} />
+          <Route path="/:model/:repairSlug" element={<Shell><ModelPage /></Shell>} />
+          <Route path="/:model/:repairSlug/:city" element={<Shell><ModelPage /></Shell>} />
           <Route path="/book" element={<Shell><Book /></Shell>} />
           <Route path="/about" element={<Shell><About /></Shell>} />
           <Route path="/faq" element={<Shell><FAQ /></Shell>} />

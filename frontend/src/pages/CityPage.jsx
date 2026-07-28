@@ -4,16 +4,31 @@ import { useSEO } from "../lib/useSEO";
 import EnquirySheet from "../components/EnquirySheet";
 import BrandIcon from "../components/BrandIcon";
 import { ShieldCheck, Clock4, BadgeIndianRupee, ArrowRight, MapPin, Wrench } from "lucide-react";
-import { BRAND_SEO_DATA, CITY_SEO_DATA } from "../lib/seoContent";
+import { parseSpintax } from "../lib/spintax";
+import { slugify } from "../lib/slugify";
+import { BRAND_SEO_DATA, CITY_SEO_DATA, CITY_ARTICLE_SPINTAX } from "../lib/seoContent";
 
 export default function CityPage() {
   const { city, brand } = useParams();
   const { content } = useContent();
   const c = content?.cities?.find((x) => x.slug === city);
   const b = brand && content ? content.brands.find((x) => x.slug === brand) : null;
+  const seed = `${city}-${brand || 'all'}`;
 
-  const citySeo = c ? (CITY_SEO_DATA[c.slug] || { areas: [], local_text: "" }) : { areas: [], local_text: "" };
-  const brandSeo = b ? (BRAND_SEO_DATA[b.slug] || {}) : {};
+  const citySeoRaw = c ? (CITY_SEO_DATA[c.slug] || { areas: [], local_text: "" }) : { areas: [], local_text: "" };
+  const brandSeoRaw = b ? (BRAND_SEO_DATA[b.slug] || {}) : {};
+  
+  const citySeo = { ...citySeoRaw, local_text: parseSpintax(citySeoRaw.local_text, seed) };
+  const brandSeo = { 
+    ...brandSeoRaw, 
+    premium_messaging: parseSpintax(brandSeoRaw.premium_messaging, seed),
+    faq_a: parseSpintax(brandSeoRaw.faq_a, seed),
+    common_heading: parseSpintax(brandSeoRaw.common_heading, seed)
+  };
+
+  const articleHtml = c ? parseSpintax(CITY_ARTICLE_SPINTAX, seed)
+    .replaceAll("[CITY]", c.name)
+    .replaceAll("[BRAND]", b ? b.name : "mobile") : "";
 
   const title = c ? (b ? `${b.name} repair in ${c.name}` : `Mobile repair in ${c.name}`) : "City Not Found";
   const subtitle = c ? (b
@@ -164,14 +179,23 @@ export default function CityPage() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
           <div className="label-kicker">Popular {b.name} repairs in {c.name}</div>
           <div className="mt-6 flex flex-wrap gap-2">
-            {b.models.map((m) => (
-              <EnquirySheet
-                key={m}
-                trigger={<button className="mm-chip" data-testid={`city-model-${m}`}>{m}</button>}
-                defaultValues={{ brand: b.slug, model: m, city: c.name }}
-                source={`city-${c.slug}-${b.slug}-model`}
-              />
-            ))}
+            {b.models.map((m) => {
+              if (m === "Other model (specify)") {
+                return (
+                  <EnquirySheet
+                    key={m}
+                    trigger={<button className="mm-chip" data-testid={`city-model-${m}`}>{m}</button>}
+                    defaultValues={{ brand: b.slug, model: m, city: c.name }}
+                    source={`city-${c.slug}-${b.slug}-model`}
+                  />
+                );
+              }
+              return (
+                <Link key={m} to={`/${slugify(m)}/screen-replacement/${c.slug}`} className="mm-chip" data-testid={`city-model-link-${m}`}>
+                  {m}
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}
@@ -204,6 +228,14 @@ export default function CityPage() {
           ))}
         </div>
       </section>
+
+      {articleHtml && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+          <div className="label-kicker">About MobileMistri in {c.name}</div>
+          <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold mb-6" style={{ color: "var(--mm-navy)" }}>{b ? `${b.name} ` : ''}Repair Service in {c.name}</h2>
+          <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
+        </section>
+      )}
     </div>
   );
 }

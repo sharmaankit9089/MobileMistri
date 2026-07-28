@@ -1,0 +1,214 @@
+export const BRANDS = [
+  {
+      "slug": "apple",
+      "name": "Apple iPhone",
+      "tag": "iPhone repair",
+      "models": [
+          "iPhone 17 Pro Max", "iPhone 17 Pro", "iPhone 17 Air", "iPhone 17 Plus", "iPhone 17",
+          "iPhone 16 Pro Max", "iPhone 16 Pro", "iPhone 16 Plus", "iPhone 16", "iPhone 16e",
+          "iPhone 15 Pro Max", "iPhone 15 Pro", "iPhone 15 Plus", "iPhone 15",
+          "iPhone 14 Pro Max", "iPhone 14 Pro", "iPhone 14 Plus", "iPhone 14",
+          "iPhone 13 Pro Max", "iPhone 13 Pro", "iPhone 13", "iPhone 13 mini",
+          "iPhone 12 Pro Max", "iPhone 12 Pro", "iPhone 12", "iPhone 12 mini",
+          "iPhone 11 Pro Max", "iPhone 11 Pro", "iPhone 11",
+          "iPhone SE (3rd Gen)", "iPhone XR", "iPhone XS Max", "iPhone XS", "iPhone X",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "samsung",
+      "name": "Samsung",
+      "tag": "Galaxy repair",
+      "models": [
+          "Galaxy S26 Ultra", "Galaxy S26+", "Galaxy S26", "Galaxy S26 Edge",
+          "Galaxy S25 Ultra", "Galaxy S25+", "Galaxy S25", "Galaxy S25 Edge",
+          "Galaxy S24 Ultra", "Galaxy S24+", "Galaxy S24", "Galaxy S24 FE",
+          "Galaxy Z Fold 7", "Galaxy Z Flip 7", "Galaxy Z Fold 6", "Galaxy Z Flip 6",
+          "Galaxy A56 5G", "Galaxy A36 5G", "Galaxy A26 5G",
+          "Galaxy A55", "Galaxy A35", "Galaxy A25",
+          "Galaxy M56 5G", "Galaxy M55", "Galaxy M35",
+          "Galaxy Note 20 Ultra",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "oneplus",
+      "name": "OnePlus",
+      "tag": "OnePlus repair",
+      "models": [
+          "OnePlus 13s", "OnePlus 13R", "OnePlus 13",
+          "OnePlus 12", "OnePlus 12R",
+          "OnePlus 11", "OnePlus 11R",
+          "OnePlus 10 Pro", "OnePlus 10T",
+          "OnePlus Open",
+          "OnePlus Nord 5", "OnePlus Nord CE 5", "OnePlus Nord 4", "OnePlus Nord CE 4", "OnePlus Nord 3",
+          "OnePlus 9 Pro", "OnePlus 9",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "xiaomi",
+      "name": "Xiaomi",
+      "tag": "Mi / Redmi repair",
+      "models": [
+          "Xiaomi 15 Ultra", "Xiaomi 15 Pro", "Xiaomi 15",
+          "Xiaomi 14 Ultra", "Xiaomi 14 Civi", "Xiaomi 14", "Xiaomi 13 Pro", "Xiaomi 13",
+          "Redmi Note 14 Pro+ 5G", "Redmi Note 14 Pro 5G", "Redmi Note 14 5G",
+          "Redmi Note 13 Pro+ 5G", "Redmi Note 13 Pro", "Redmi Note 13",
+          "Redmi 14C", "Redmi 13C", "Redmi A4 5G",
+          "POCO X7 Pro", "POCO X7", "POCO F7 Ultra", "POCO F7 Pro", "POCO F6 Pro", "POCO F6", "POCO M7 Pro", "POCO M6 Pro",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "google-pixel",
+      "name": "Google Pixel",
+      "tag": "Pixel repair",
+      "models": [
+          "Pixel 10 Pro XL", "Pixel 10 Pro Fold", "Pixel 10 Pro", "Pixel 10",
+          "Pixel 9 Pro XL", "Pixel 9 Pro Fold", "Pixel 9 Pro", "Pixel 9", "Pixel 9a",
+          "Pixel 8 Pro", "Pixel 8", "Pixel 8a",
+          "Pixel 7 Pro", "Pixel 7", "Pixel 7a",
+          "Pixel 6 Pro", "Pixel 6", "Pixel 6a",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "nothing",
+      "name": "Nothing",
+      "tag": "Nothing Phone repair",
+      "models": [
+          "Nothing Phone (3)", "Nothing Phone (3a) Pro", "Nothing Phone (3a)",
+          "Nothing Phone (2a) Plus", "Nothing Phone (2a)",
+          "Nothing Phone (2)", "Nothing Phone (1)",
+          "CMF Phone 2 Pro", "CMF Phone 1",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "realme",
+      "name": "Realme",
+      "tag": "Realme repair",
+      "models": [
+          "Realme GT 8 Pro", "Realme GT 7 Pro", "Realme GT 7",
+          "Realme P3 Ultra", "Realme P3 Pro", "Realme P3",
+          "Realme 14 Pro+ 5G", "Realme 14 Pro 5G",
+          "Realme 13 Pro+ 5G", "Realme 13 Pro",
+          "Realme 12 Pro+", "Realme 12 Pro",
+          "Realme Narzo 80 Pro", "Realme Narzo 70 Pro", "Realme Narzo 70",
+          "Realme C75", "Realme C67", "Realme C55",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "motorola",
+      "name": "Motorola",
+      "tag": "Moto repair",
+      "models": [
+          "Motorola Edge 60 Ultra", "Motorola Edge 60 Pro", "Motorola Edge 60 Fusion",
+          "Motorola Edge 50 Ultra", "Motorola Edge 50 Pro", "Motorola Edge 50 Fusion",
+          "Motorola Edge 50 Neo", "Motorola Edge 40 Neo",
+          "Motorola Razr 60 Ultra", "Motorola Razr 60", "Motorola Razr 50 Ultra", "Motorola Razr 50",
+          "Moto G96", "Moto G85", "Moto G75", "Moto G64", "Moto G54", "Moto G34",
+          "Other model (specify)"
+      ],
+  },
+  {
+      "slug": "other",
+      "name": "Other brand",
+      "tag": "Any other brand",
+      "models": [
+          "Vivo X200 Pro", "Vivo X200", "Vivo V50", "Vivo V40",
+          "iQOO 13", "iQOO Neo 10",
+          "Oppo Find X8 Pro", "Oppo Find X8", "Oppo Reno 13 Pro", "Oppo F29 Pro",
+          "Honor Magic 7 Pro", "Honor 200 Pro",
+          "Asus ROG Phone 9", "Asus Zenfone 12 Ultra",
+          "Infinix", "Tecno", "Lava", "Micromax",
+          "Not listed (specify in message)",
+          "Other model (specify)"
+      ],
+  },
+];
+
+export const CITIES = [
+  {"slug": "delhi", "name": "Delhi", "region": "NCR"},
+  {"slug": "noida", "name": "Noida", "region": "NCR"},
+  {"slug": "gurgaon", "name": "Gurgaon", "region": "NCR"},
+  {"slug": "ghaziabad", "name": "Ghaziabad", "region": "NCR"},
+  {"slug": "faridabad", "name": "Faridabad", "region": "NCR"},
+  {"slug": "hyderabad", "name": "Hyderabad", "region": "South"},
+  {"slug": "bangalore", "name": "Bangalore", "region": "South"},
+  {"slug": "pune", "name": "Pune", "region": "West"},
+  {"slug": "mumbai", "name": "Mumbai", "region": "West"},
+  {"slug": "chennai", "name": "Chennai", "region": "South"},
+];
+
+export const SERVICES = [
+  {"slug": "screen-replacement", "name": "Screen Replacement", "icon": "Smartphone",
+   "desc": "Genuine quality OLED/LCD display replacement with 6-month warranty.",
+   "price_from": 1499},
+  {"slug": "battery-replacement", "name": "Battery Replacement", "icon": "BatteryCharging",
+   "desc": "High-capacity original-grade batteries, health restored to 100%.",
+   "price_from": 1199},
+  {"slug": "charging-port", "name": "Charging Port Repair", "icon": "Plug",
+   "desc": "Fix loose, slow or dead charging ports — USB-C, Lightning, micro-USB.",
+   "price_from": 799},
+  {"slug": "back-glass", "name": "Back Glass Replacement", "icon": "Square",
+   "desc": "Crack-free back panel replacement matched to your model colour.",
+   "price_from": 999},
+  {"slug": "water-damage", "name": "Water Damage Recovery", "icon": "Droplets",
+   "desc": "Ultrasonic cleaning + board-level recovery for liquid-damaged phones.",
+   "price_from": 1999},
+  {"slug": "speaker-mic-camera", "name": "Speaker / Mic / Camera", "icon": "Camera",
+   "desc": "Audio and camera module fixes — loudspeaker, earpiece, mic, front/rear cam.",
+   "price_from": 699},
+  {"slug": "software-update", "name": "Software & OS Updates", "icon": "Cpu",
+   "desc": "OS flashing, boot-loop fixes, data recovery, account unlock assistance.",
+   "price_from": 499},
+  {"slug": "diagnostics", "name": "Free Diagnostics", "icon": "Stethoscope",
+   "desc": "60-point on-site diagnostic with zero obligation — pay only if we fix it.",
+   "price_from": 0},
+  {"slug": "logic-board", "name": "Logic Board / Chip-Level Repair", "icon": "Microchip",
+   "desc": "Advanced micro-soldering and motherboard repair for water damage, no power, boot loop and IC-level failures.",
+   "price_from": 0},
+];
+
+export const ISSUES = [
+  "Cracked / broken screen",
+  "Battery drains fast",
+  "Not charging",
+  "Back glass broken",
+  "Liquid / water damage",
+  "Speaker / mic not working",
+  "Camera not working",
+  "Phone hangs / slow",
+  "Dead phone / won't turn on",
+  "Software / OS issue",
+  "Something else",
+];
+
+export const FAQ = [
+  {"q": "How does doorstep mobile repair work?",
+   "a": "Book via the form, our verified technician reaches your doorstep within 60-90 minutes in service hours, diagnoses the issue in front of you, gives a transparent quote, and fixes it on-site in most cases."},
+  {"q": "Do you use genuine parts?",
+   "a": "Yes. We use OEM/original-grade parts with a 6-12 month service warranty. The part grade is disclosed to you before repair begins."},
+  {"q": "What is the warranty on repairs?",
+   "a": "Every repair carries a standardised 6-month service warranty. Screen & battery replacements carry a 12-month warranty on our Premium tier."},
+  {"q": "Is there any visit charge?",
+   "a": "A small convenience fee may apply for doorstep visits — fully waived on confirmed repairs. The exact amount is shared with you upfront when you book."},
+  {"q": "Which cities do you serve?",
+   "a": "Delhi, Noida, Gurgaon, Ghaziabad, Faridabad, Hyderabad, Bangalore, Pune, Mumbai and Chennai — with more cities launching soon."},
+  {"q": "How are technicians vetted?",
+   "a": "All technicians undergo background verification, in-house certification, and continuous training. Your data never leaves your phone and repairs happen in front of you."},
+];
+
+export const TESTIMONIALS = [
+  {"name": "Rohan Mehta", "city": "Gurgaon", "rating": 5,
+   "text": "Screen of my iPhone 14 Pro cracked on a Sunday. MobileMistri sent a technician in 90 minutes and fixed it at my desk. Honest pricing, no drama."},
+  {"name": "Priya Sharma", "city": "Bangalore", "rating": 5,
+   "text": "Battery swap on my OnePlus 11 done at home while I was on a call. Genuine part, clean work, 12-month warranty — nothing to complain about."},
+  {"name": "Arjun Kapoor", "city": "Mumbai", "rating": 5,
+   "text": "Water-damaged Samsung S24. Authorised service centre wanted a week and a steep quote. MobileMistri revived it in 2 days at a fraction of the cost."},
+  {"name": "Nisha Verma", "city": "Delhi", "rating": 5,
+   "text": "Pixel 8 charging port repair done at my office. Technician showed every step. Very professional — this is how repair should feel."},
+];

@@ -4,13 +4,26 @@ import { useSEO } from "../lib/useSEO";
 import BrandIcon from "../components/BrandIcon";
 import EnquirySheet from "../components/EnquirySheet";
 import { ShieldCheck, BadgeIndianRupee, Clock4, MapPin, ArrowRight, Wrench } from "lucide-react";
-import { BRAND_SEO_DATA } from "../lib/seoContent";
+import { parseSpintax } from "../lib/spintax";
+import { slugify } from "../lib/slugify";
+import { BRAND_SEO_DATA, BRAND_ARTICLE_SPINTAX } from "../lib/seoContent";
 
 export default function BrandPage() {
   const { brand } = useParams();
   const { content } = useContent();
   const b = content?.brands?.find((x) => x.slug === brand);
-  const brandSeo = b ? (BRAND_SEO_DATA[b.slug] || {}) : {};
+  
+  const brandSeoRaw = b ? (BRAND_SEO_DATA[b.slug] || {}) : {};
+  const seed = `${brand}-only`;
+  
+  const brandSeo = { 
+    ...brandSeoRaw, 
+    premium_messaging: parseSpintax(brandSeoRaw.premium_messaging, seed),
+    faq_a: parseSpintax(brandSeoRaw.faq_a, seed),
+    common_heading: parseSpintax(brandSeoRaw.common_heading, seed)
+  };
+  
+  const articleHtml = b ? parseSpintax(BRAND_ARTICLE_SPINTAX, seed).replaceAll("[BRAND]", b.name) : "";
 
   useSEO({
     title: b ? `${b.name} Repair at Doorstep | Genuine Parts | MobileMistri` : "Brand Not Found",
@@ -142,14 +155,23 @@ export default function BrandPage() {
         <div className="label-kicker">Models we service</div>
         <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>All {b.name} models ({b.models.length})</h2>
         <div className="mt-6 flex flex-wrap gap-2">
-          {b.models.map((m) => (
-            <EnquirySheet
-              key={m}
-              trigger={<button className="mm-chip" data-testid={`brand-model-chip-${m}`}>{m}</button>}
-              defaultValues={{ brand: b.slug, model: m }}
-              source={`brand-${b.slug}-model`}
-            />
-          ))}
+          {b.models.map((m) => {
+            if (m === "Other model (specify)") {
+              return (
+                <EnquirySheet
+                  key={m}
+                  trigger={<button className="mm-chip" data-testid={`brand-model-chip-${m}`}>{m}</button>}
+                  defaultValues={{ brand: b.slug, model: m }}
+                  source={`brand-${b.slug}-model`}
+                />
+              );
+            }
+            return (
+              <Link key={m} to={`/${slugify(m)}/screen-replacement`} className="mm-chip" data-testid={`brand-model-link-${m}`}>
+                {m}
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -176,6 +198,12 @@ export default function BrandPage() {
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="label-kicker">About {b.name} Repair</div>
+        <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold mb-6" style={{ color: "var(--mm-navy)" }}>{b.name} Service Information</h2>
+        <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
       </section>
     </div>
   );

@@ -1,3 +1,4 @@
+import { useSEO } from "../lib/useSEO";
 import EnquirySheet from "../components/EnquirySheet";
 import { Link } from "react-router-dom";
 import { ShieldCheck, BadgeIndianRupee, Users, Truck } from "lucide-react";
@@ -9,8 +10,41 @@ const VALUES = [
   { i: Truck, t: "Dual presence", d: "Walk into a MobileMistri Support Hub — or let our doorstep fleet come to you." },
 ];
 
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MobileMistri",
+  "legalName": "Ring N Relax Services Pvt. Ltd.",
+  "url": "https://www.mobilemistri.com/",
+  "description": "India's most trusted doorstep mobile repair brand. Verified technicians, genuine OEM-grade parts, transparent pricing and 6–12 month service warranty across 10 cities.",
+  "foundingDate": "2022",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://www.mobilemistri.com/logo.png"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9650061347",
+    "contactType": "customer support",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "areaServed": [
+    "Delhi", "Noida", "Gurgaon", "Ghaziabad", "Faridabad",
+    "Hyderabad", "Bangalore", "Pune", "Mumbai", "Chennai"
+  ]
+};
+
 export default function About() {
+  useSEO({
+    title: "About MobileMistri | India's Trusted Doorstep Mobile Repair Brand",
+    description: "MobileMistri (a unit of Ring N Relax Services Pvt. Ltd.) organises India's fragmented mobile repair market with verified technicians, genuine parts, transparent pricing and a 6–12 month warranty — at your door or at our Support Hubs.",
+    canonical: "https://www.mobilemistri.com/about",
+  });
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_SCHEMA) }} />
     <div>
       <section className="bg-gradient-to-br from-white via-zinc-50 to-blue-50/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -21,7 +55,7 @@ export default function About() {
                 India's most trusted <span className="text-[#002FA7]">doorstep</span> mobile repair brand.
               </h1>
               <p className="mt-6 text-lg text-zinc-600 leading-relaxed">
-                A unit of Ring N Relax Services Pvt. Ltd., MobileMistri organises India's fragmented mobile repair market with verified technicians, genuine parts, transparent pricing and a 6–12 month service warranty — delivered at your door or at our neatly-branded Support Hubs.
+                A unit of Ring N Relax Services Pvt. Ltd., MobileMistri organises India's fragmented mobile repairing market with verified technicians, genuine parts, transparent pricing and a 6–12 month service warranty — delivered at your door or at our neatly-branded Mobile Repair Support Hubs.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <EnquirySheet trigger={<button className="mm-btn-primary" data-testid="about-cta">Talk to us</button>} source="about" />
@@ -72,6 +106,18 @@ export default function About() {
           </div>
         </div>
       </section>
-    </div>
+      <div className="bg-zinc-50 pt-10 pb-20 border-t border-zinc-200">
+        <div className="max-w-4xl mx-auto px-4 prose prose-slate">
+          <h2 className="text-3xl font-display text-zinc-900 mb-6">Redefining Mobile Repair Trust in India</h2>
+          <p className="text-zinc-600 mb-4">
+            For years, the Indian mobile repair market has been plagued by unorganized cell phone repair shops, counterfeit spare parts, and a severe lack of data privacy. MobileMistri was founded with a singular vision: to bring absolute transparency and enterprise-grade professionalism to the post-warranty mobile repairing industry. By operating a hybrid model of state-of-the-art physical Smartphone Repair Hubs and a massive fleet of doorstep technicians, we provide a unified, trusted phone repair experience for millions of smartphone users across the country.
+          </p>
+          <p className="text-zinc-600 mb-4">
+            Our commitment to mobile service quality goes beyond just using genuine parts. Every MobileMistri mechanic undergoes an exhaustive multi-level background check and intensive technical training before they are certified to handle your device. Whether it is an Apple iPhone screen replacement, a Samsung Galaxy battery fix, or a OnePlus logic board repair, our experts follow strict SOPs (Standard Operating Procedures) to ensure safe teardowns and flawless reassembly. When you book a mobile repair with us, you are not just getting a quick fix—you are investing in the longevity and security of your mobile device, backed by an ironclad 6 to 12-month cell phone repair warranty.
+          </p>
+        </div>
+      </div>
+      </div>
+    </>
   );
 }

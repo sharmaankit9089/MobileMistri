@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import { useSEO } from "../lib/useSEO";
 
 export default function NotFound() {
+  useSEO({
+    title: "Page Not Found | MobileMistri",
+    noindex: true
+  });
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-24 text-center">
       <div className="label-kicker">404</div>

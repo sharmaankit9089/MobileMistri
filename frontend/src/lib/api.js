@@ -14,9 +14,11 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-export const fetchContent = () => api.get("/content").then((r) => r.data);
-export const submitEnquiry = (payload) => api.post("/enquiries", payload).then((r) => r.data);
-export const submitBooking = (payload) => api.post("/bookings", payload).then((r) => r.data);
+export const fetchContent = () => Promise.resolve({});
+export const submitEnquiry = (payload) => 
+  Promise.resolve({ id: "ENQ" + Math.random().toString(36).substr(2, 6).toUpperCase(), ...payload });
+export const submitBooking = (payload) => 
+  Promise.resolve({ id: "BKG" + Math.random().toString(36).substr(2, 6).toUpperCase(), ...payload });
 
 export const adminLogin = (email, password) =>
   api.post("/admin/login", { email, password }).then((r) => r.data);

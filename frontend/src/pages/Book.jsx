@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { useContent } from "../lib/content";
+import { useSEO } from "../lib/useSEO";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
@@ -14,8 +15,24 @@ import { Link } from "react-router-dom";
 
 const STEPS = ["Brand", "Model", "Issue", "Details"];
 
+const BOOKING_BREADCRUMB_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mobilemistri.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Book Repair", "item": "https://www.mobilemistri.com/book" }
+  ]
+};
+
 export default function Book() {
   const { content } = useContent();
+
+  useSEO({
+    title: "Book Doorstep Mobile Repair | Schedule Online in 60 Seconds | MobileMistri",
+    description: "Book a certified mobile repair technician to your doorstep in Delhi, Noida, Gurgaon, Mumbai, Bangalore & 5 more cities. Choose brand, model & issue — technician arrives in 90 min.",
+    canonical: "https://www.mobilemistri.com/book",
+  });
+
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(null);
   const [submitting, setSubmitting] = useState(false);
@@ -96,10 +113,12 @@ export default function Book() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12 md:py-20">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BOOKING_BREADCRUMB_SCHEMA) }} />
+      <div className="max-w-3xl mx-auto px-4 py-12 md:py-20">
       <div className="label-kicker">Book a doorstep repair</div>
       <h1 className="mt-2 font-display text-3xl md:text-5xl font-semibold" style={{ color: "var(--mm-navy)" }}>
-        4 quick steps. Expert at your door.
+        4 quick steps. Mobile Repair Expert at your door.
       </h1>
 
       {/* Steps header */}
@@ -270,6 +289,13 @@ export default function Book() {
           )}
         </div>
       </div>
-    </div>
+
+      <div className="max-w-2xl mx-auto mt-12 text-center">
+        <p className="text-sm text-slate-500 leading-relaxed">
+          <strong>Instant Doorstep Mobile Repair Booking:</strong> Our secure booking platform instantly routes your request to a background-verified MobileMistri cell phone repair technician near you. We operate under a strict "No Fix, No Fee" policy—you will only be charged if your smartphone is successfully repaired. All mobile repairing services include OEM-grade parts and are backed by a 6 to 12-month phone repair warranty for complete peace of mind.
+        </p>
+      </div>
+      </div>
+    </>
   );
 }

@@ -10,7 +10,7 @@ export default function FloatingActions() {
       className="fixed inset-x-0 bottom-0 z-40 border-t border-zinc-200 bg-white/95 backdrop-blur-md shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)]"
       data-testid="floating-actions"
     >
-      <div className="max-w-7xl mx-auto grid grid-cols-2">
+      <div className="w-full grid grid-cols-2">
         <a
           href={`https://wa.me/${WA_NUMBER}?text=${WA_TEXT}`}
           target="_blank"

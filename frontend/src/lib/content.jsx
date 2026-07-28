@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { fetchContent } from "./api";
+import * as staticContent from "./contentData";
 
 const ContentContext = createContext(null);
 
@@ -8,7 +8,14 @@ export const ContentProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchContent().then(setContent).catch((e) => setError(e.message));
+    setContent({
+      brands: staticContent.BRANDS,
+      cities: staticContent.CITIES,
+      services: staticContent.SERVICES,
+      issues: staticContent.ISSUES,
+      faq: staticContent.FAQ,
+      testimonials: staticContent.TESTIMONIALS
+    });
   }, []);
 
   return (

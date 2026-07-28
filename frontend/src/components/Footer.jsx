@@ -99,7 +99,7 @@ export default function Footer() {
       </div>
 
       {/* Disclaimer band */}
-      <div className="border-t border-white/10 pb-24 sm:pb-0">
+      <div className="border-t border-white/10 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-xs text-slate-400 leading-relaxed" data-testid="footer-disclaimer">
           © {new Date().getFullYear()} MobileMistri provides independent mobile repair services. We are not affiliated with or authorized by Apple, Samsung, Xiaomi, or any other brand. All trademarks, logos, and brand names are the property of their respective owners. · Ring N Relax Services Private Limited · All rights reserved.
         </div>
