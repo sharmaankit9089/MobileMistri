@@ -60,19 +60,9 @@
     "start": "craco start",
     "prebuild": "node scripts/generate-sitemap.js",
     "build": "craco build",
-    "postbuild": "react-snap",
+    "snap": "node scripts/run-react-snap.js",
     "test": "craco test",
     "sitemap": "node scripts/generate-sitemap.js"
-  },
-  "reactSnap": {
-    "inlineCss": false,
-    "concurrency": 4,
-    "port": 45679,
-    "puppeteerExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox"
-    ]
   },
   "browserslist": {
     "production": [
