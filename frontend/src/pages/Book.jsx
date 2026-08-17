@@ -11,18 +11,10 @@ import { lookupCityByPin } from "../lib/pincode";
 import { toast } from "sonner";
 import { Check, ArrowLeft, ArrowRight, Loader2, MapPin, AlertTriangle } from "lucide-react";
 import BrandIcon from "../components/BrandIcon";
+import Breadcrumbs from "../components/Breadcrumbs";
 import { Link } from "react-router-dom";
 
 const STEPS = ["Brand", "Model", "Issue", "Details"];
-
-const BOOKING_BREADCRUMB_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mobilemistri.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Book Repair", "item": "https://www.mobilemistri.com/book" }
-  ]
-};
 
 export default function Book() {
   const { content } = useContent();
@@ -112,9 +104,14 @@ export default function Book() {
     );
   }
 
+  const breadcrumbs = [
+    { label: "Home", path: "/" },
+    { label: "Book Repair", path: "/book", current: true }
+  ];
+
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BOOKING_BREADCRUMB_SCHEMA) }} />
+      <Breadcrumbs items={breadcrumbs} />
       <div className="max-w-3xl mx-auto px-4 py-12 md:py-20">
       <div className="label-kicker">Book a doorstep repair</div>
       <h1 className="mt-2 font-display text-3xl md:text-5xl font-semibold" style={{ color: "var(--mm-navy)" }}>

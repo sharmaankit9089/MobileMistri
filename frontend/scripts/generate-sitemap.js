@@ -140,10 +140,18 @@ if (brandMatches) {
     
     // extract models array text
     const modelsText = match.match(/\"models\":\s*\[([\s\S]*?)\]/)[1];
-    const models = [...modelsText.matchAll(/\"([A-Za-z0-9 \(\)\+]+)\"/g)].map(m => m[1]);
+    let models = [...modelsText.matchAll(/\"([A-Za-z0-9 \(\)\+]+)\"/g)].map(m => m[1]);
+    
+    // Apply Master Page Strategy: Limit models to avoid thin content & keep URLs under ~1200
+    let modelLimit = 5; // Default for low tier
+    if (brandObj) {
+      if (brandObj.tier === "top") modelLimit = 15;
+      else if (brandObj.tier === "mid") modelLimit = 8;
+    }
+    
+    models = models.filter(m => !m.startsWith("Other")).slice(0, modelLimit);
     
     models.forEach((modelName) => {
-      if (modelName.startsWith("Other")) return;
       const modelSlug = slugify(modelName);
       SERVICES_SLUGS.forEach((serviceSlug) => {
         // Base Model x Service Page (Master Page) - Generated for ALL models and ALL services

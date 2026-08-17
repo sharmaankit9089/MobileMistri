@@ -23,7 +23,7 @@ const toastTimeouts = new Map()
 
 const addToRemoveQueue = (toastId) => {
   if (toastTimeouts.has(toastId)) {
-    return
+    return 
   }
 
   const timeout = setTimeout(() => {

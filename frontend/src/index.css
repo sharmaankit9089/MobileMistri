@@ -140,3 +140,9 @@ h1, h2, h3, h4, .font-display {
 @layer base {
   [data-debug-wrapper="true"] { display: contents !important; }
 }
+
+/* Core Web Vitals Optimization */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}

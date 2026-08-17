@@ -57,6 +57,10 @@ export function useSEO({ title, description, canonical, image, noindex }) {
     setMeta('meta[property="og:image"]', 'property="og:image"', resolvedImage);
     setMeta('meta[property="og:type"]',  'property="og:type"',  "website");
     setMeta('meta[property="og:site_name"]', 'property="og:site_name"', "MobileMistri");
+    
+    // Freshness Signal for Google
+    const today = new Date().toISOString().split('T')[0];
+    setMeta('meta[property="article:modified_time"]', 'property="article:modified_time"', today);
 
     // ── Twitter Card ───────────────────────────────────────────
     setMeta('meta[name="twitter:card"]',        'name="twitter:card"',        "summary_large_image");

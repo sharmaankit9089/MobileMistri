@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useContent } from "../lib/content";
 import { useSEO } from "../lib/useSEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 import EnquirySheet from "../components/EnquirySheet";
 import { 
   ShieldCheck, Clock4, BadgeIndianRupee, MapPin, Wrench, Smartphone, 
@@ -84,16 +85,13 @@ export default function ModelPage() {
 
   const locString = c ? `in ${c.name}` : "at your doorstep";
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.mobilemistri.com/" },
-      { "@type": "ListItem", "position": 2, "name": foundBrand.name, "item": `https://www.mobilemistri.com/brand/${foundBrand.slug}` },
-      { "@type": "ListItem", "position": 3, "name": foundModelName, "item": `https://www.mobilemistri.com/${modelSlug}/screen-replacement` },
-      ...(c ? [{ "@type": "ListItem", "position": 4, "name": c.name, "item": canonical }] : []),
-    ]
-  };
+  const breadcrumbs = [
+    { label: "Home", path: "/" },
+    { label: foundBrand.name, path: `/brand/${foundBrand.slug}` },
+    { label: foundModelName, path: `/${modelSlug}/repair` },
+    ...(c ? [{ label: c.name, path: `/city/${c.slug}` }] : []),
+    { label: repairName, path: canonical, current: true }
+  ];
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -113,27 +111,10 @@ export default function ModelPage() {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
     <div className="bg-white">
       {/* Breadcrumbs */}
-      <div className="bg-slate-50 border-b border-slate-200 py-3">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center text-xs text-slate-500 overflow-x-auto whitespace-nowrap">
-          <Link to="/" className="hover:text-slate-800">Home</Link>
-          <ChevronRight className="w-3 h-3 mx-2" />
-          <Link to={`/brand/${foundBrand.slug}`} className="hover:text-slate-800">{foundBrand.name}</Link>
-          <ChevronRight className="w-3 h-3 mx-2" />
-          <Link to={`/${modelSlug}/repair`} className="hover:text-slate-800">{foundModelName}</Link>
-          {c && (
-            <>
-              <ChevronRight className="w-3 h-3 mx-2" />
-              <Link to={`/city/${c.slug}`} className="hover:text-slate-800">{c.name}</Link>
-            </>
-          )}
-          <ChevronRight className="w-3 h-3 mx-2" />
-          <span className="text-slate-800 font-medium">{repairName}</span>
-        </div>
-      </div>
+      <Breadcrumbs items={breadcrumbs} />
 
       {/* HERO */}
       <section className="bg-gradient-to-br from-white via-zinc-50 to-blue-50/40 border-b border-zinc-200">
@@ -298,7 +279,7 @@ export default function ModelPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white cv-auto">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl text-zinc-900">Frequently Asked Questions</h2>
@@ -316,7 +297,7 @@ export default function ModelPage() {
 
       {/* OTHER REPAIRS FOR THIS MODEL */}
       {content?.services && (
-        <section className="py-20 bg-slate-50 border-t border-slate-200">
+        <section className="py-20 bg-slate-50 border-t border-slate-200 cv-auto">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="font-display text-2xl text-zinc-900 mb-8">Other {foundModelName} repairs {locString}.</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

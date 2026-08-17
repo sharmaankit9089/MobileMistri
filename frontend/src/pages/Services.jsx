@@ -2,6 +2,7 @@ import { useContent } from "../lib/content";
 import { Link } from "react-router-dom";
 import { useSEO } from "../lib/useSEO";
 import EnquirySheet from "../components/EnquirySheet";
+import Breadcrumbs from "../components/Breadcrumbs";
 import { Wrench, BatteryCharging, Smartphone, Plug, Square, Droplets, Camera, Cpu, Stethoscope, Cpu as Microchip } from "lucide-react";
 
 const ICONS = { Smartphone, BatteryCharging, Plug, Square, Droplets, Camera, Cpu, Stethoscope, Microchip };
@@ -41,9 +42,15 @@ export default function Services() {
     }))
   };
 
+  const breadcrumbs = [
+    { label: "Home", path: "/" },
+    { label: "Services", path: "/services", current: true }
+  ];
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }} />
+      <Breadcrumbs items={breadcrumbs} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="label-kicker">Services</div>
         <h1 className="mt-2 font-display text-4xl md:text-6xl font-semibold" style={{ color: "var(--mm-navy)" }}>

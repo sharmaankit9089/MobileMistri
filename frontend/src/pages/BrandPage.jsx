@@ -3,6 +3,7 @@ import { useContent } from "../lib/content";
 import { useSEO } from "../lib/useSEO";
 import BrandIcon from "../components/BrandIcon";
 import EnquirySheet from "../components/EnquirySheet";
+import Breadcrumbs from "../components/Breadcrumbs";
 import { ShieldCheck, BadgeIndianRupee, Clock4, MapPin, ArrowRight, Wrench } from "lucide-react";
 import { parseSpintax } from "../lib/spintax";
 import { slugify } from "../lib/slugify";
@@ -85,10 +86,16 @@ export default function BrandPage() {
     }
   });
 
+  const breadcrumbs = [
+    { label: "Home", path: "/" },
+    { label: b.name, path: canonical, current: true }
+  ];
+
   return (
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <Breadcrumbs items={breadcrumbs} />
 
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-zinc-50 to-blue-50/40">
         <div className="absolute top-1/4 -right-20 w-96 h-96 rounded-full bg-[#002FA7]/5 blur-3xl" />
@@ -175,7 +182,7 @@ export default function BrandPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 cv-auto">
         <div className="label-kicker">FAQ</div>
         <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold" style={{ color: "var(--mm-navy)" }}>{b.name} Repair FAQs</h2>
         <div className="mt-8 space-y-4">
@@ -200,7 +207,7 @@ export default function BrandPage() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 cv-auto">
         <div className="label-kicker">About {b.name} Repair</div>
         <h2 className="mt-2 font-display text-3xl md:text-4xl font-semibold mb-6" style={{ color: "var(--mm-navy)" }}>{b.name} Service Information</h2>
         <div dangerouslySetInnerHTML={{ __html: articleHtml }} />

@@ -268,6 +268,7 @@ export default function Home() {
                 src="https://customer-assets.emergentagent.com/job_quick-phone-repair-4/artifacts/549c59kb_ChatGPT%20Image%20Apr%2020%2C%202026%2C%2001_22_06%20AM.png"
                 alt="MobileMistri store with in-store repair counter and doorstep service technicians"
                 className="w-full h-auto block"
+                loading="lazy"
                 data-testid="brand-storefront-img"
               />
             </div>
@@ -326,7 +327,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white cv-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="label-kicker mb-2">Customer Reviews</p>
@@ -351,7 +352,7 @@ export default function Home() {
       </section>
 
       {/* SEO ARTICLE CONTENT */}
-      <section className="py-20 bg-zinc-50 border-t border-zinc-100">
+      <section className="py-20 bg-zinc-50 border-t border-zinc-100 cv-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto prose prose-slate">
             <h2 className="text-3xl font-display text-zinc-900 mb-6">India's Most Trusted Doorstep Mobile Repair Service</h2>
