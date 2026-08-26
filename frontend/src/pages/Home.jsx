@@ -9,7 +9,6 @@ import { ShieldCheck, Clock4, BadgeIndianRupee, Wrench, CircleCheck, Truck, Star
 const SVC_ICONS = { Smartphone, BatteryCharging, Plug, Square, Droplets, Camera, Cpu, Stethoscope, Microchip };
 
 const STATS = [
-  { icon: Award, n: "30K+", l: "Repairs Done" },
   { icon: Clock4, n: "60–90 Min", l: "Avg Doorstep ETA" },
   { icon: ShieldCheck, n: "100%", l: "Genuine Parts" },
   { icon: MapPin, n: "10 Cities", l: "Pan India Service" },
