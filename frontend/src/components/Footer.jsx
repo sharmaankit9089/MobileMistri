@@ -32,7 +32,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-[color:var(--mm-orange)]" />
-                <a href="mailto:hello@mobilemistri.com" data-testid="footer-email">hello@mobilemistri.com</a>
+                <a href="mailto:info@mobilemistri.com" data-testid="footer-email">info@mobilemistri.com</a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-[color:var(--mm-orange)]" /> Pan India · 10 cities live
