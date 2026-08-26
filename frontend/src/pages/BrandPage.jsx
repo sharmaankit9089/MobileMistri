@@ -88,7 +88,7 @@ export default function BrandPage() {
 
   const breadcrumbs = [
     { label: "Home", path: "/" },
-    { label: b.name, path: canonical, current: true }
+    { label: b.name, path: `/brand/${b.slug}`, current: true }
   ];
 
   return (
