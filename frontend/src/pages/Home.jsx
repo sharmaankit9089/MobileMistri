@@ -38,12 +38,6 @@ const LOCAL_BUSINESS_SCHEMA = {
       "closes": "21:00"
     }
   ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "30000",
-    "bestRating": "5"
-  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Mobile Repair Services",
@@ -330,7 +324,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <p className="label-kicker mb-2">Customer Reviews</p>
-            <h2 className="font-display text-3xl sm:text-4xl text-zinc-900 mb-3">30,000+ Happy Customers</h2>
             <p className="text-zinc-500 text-base max-w-md mx-auto">Real customers. Real phones. Real fixes.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
