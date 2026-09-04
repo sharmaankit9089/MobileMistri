@@ -35,7 +35,7 @@ export default function Footer() {
                 <a href="mailto:info@mobilemistri.com" data-testid="footer-email">info@mobilemistri.com</a>
               </li>
               <li className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-[color:var(--mm-orange)]" /> Pan India · 10 cities live
+                <MapPin className="h-4 w-4 text-[color:var(--mm-orange)]" /> Pan India · 11 cities live
               </li>
               <li className="flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-[color:var(--mm-orange)]" /> 6–12 month warranty on every repair
@@ -89,7 +89,13 @@ export default function Footer() {
                     </li>
                   ))}
                   <li>
-                    <Link to="/admin/login" className="text-slate-400 hover:text-white text-xs">Admin login</Link>
+                    <Link to="/privacy" className="text-slate-300 hover:text-white transition-colors">Privacy Policy</Link>
+                  </li>
+                  <li>
+                    <Link to="/terms" className="text-slate-300 hover:text-white transition-colors">Terms of Service</Link>
+                  </li>
+                  <li>
+                    <Link to="/admin/login" className="text-slate-400 hover:text-white text-xs mt-4 block">Admin login</Link>
                   </li>
                 </ul>
               </div>

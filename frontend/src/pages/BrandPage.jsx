@@ -28,7 +28,7 @@ export default function BrandPage() {
 
   useSEO({
     title: b ? `${b.name} Repair at Doorstep | Genuine Parts | MobileMistri` : "Brand Not Found",
-    description: b ? `Certified ${b.name} technicians across Delhi, Mumbai, Bangalore & 7 more cities. OEM-grade parts, 6–12 month warranty, 60–90 min doorstep ETA. Book now.` : "",
+    description: b ? `Certified ${b.name} technicians across Delhi, Mumbai, Bangalore & 8 more cities. OEM-grade parts, 6–12 month warranty, 60–90 min doorstep ETA. Book now.` : "",
     canonical: b ? `https://www.mobilemistri.com/brand/${b.slug}` : "",
   });
 
@@ -112,7 +112,7 @@ export default function BrandPage() {
             </h1>
           </div>
           <p className="mt-5 text-zinc-500 max-w-2xl text-lg">
-            {brandSeo.premium_messaging || `Certified ${b.name} technicians, OEM-grade parts, and up to 12-month warranty — across Delhi, Mumbai, Bangalore and 6 more cities.`}
+            {brandSeo.premium_messaging || `Certified ${b.name} technicians, OEM-grade parts, and up to 12-month warranty — across Delhi, Mumbai, Bangalore and 7 more cities.`}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <EnquirySheet

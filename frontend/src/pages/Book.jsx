@@ -21,7 +21,7 @@ export default function Book() {
 
   useSEO({
     title: "Book Doorstep Mobile Repair | Schedule Online in 60 Seconds | MobileMistri",
-    description: "Book a certified mobile repair technician to your doorstep in Delhi, Noida, Gurgaon, Mumbai, Bangalore & 5 more cities. Choose brand, model & issue — technician arrives in 90 min.",
+    description: "Book a certified mobile repair technician to your doorstep in Delhi, Noida, Gurgaon, Mumbai, Bangalore & 6 more cities. Choose brand, model & issue — technician arrives in 90 min.",
     canonical: "https://www.mobilemistri.com/book",
   });
 

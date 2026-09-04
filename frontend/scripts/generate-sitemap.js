@@ -13,6 +13,7 @@ const CITIES = [
   { slug: "faridabad", priority: "0.8", metro: false },
   { slug: "pune",      priority: "0.8", metro: false },
   { slug: "chennai",   priority: "0.8", metro: false },
+  { slug: "lucknow",   priority: "0.8", metro: true  },
 ];
 
 const BRANDS = [
@@ -142,11 +143,11 @@ if (brandMatches) {
     const modelsText = match.match(/\"models\":\s*\[([\s\S]*?)\]/)[1];
     let models = [...modelsText.matchAll(/\"([A-Za-z0-9 \(\)\+]+)\"/g)].map(m => m[1]);
     
-    // Apply Master Page Strategy: Limit models to avoid thin content & keep URLs under ~1200
-    let modelLimit = 5; // Default for low tier
+    // Apply Master Page Strategy: Limit models to avoid thin content & keep URLs under ~5000
+    let modelLimit = 10; // Default for low tier
     if (brandObj) {
-      if (brandObj.tier === "top") modelLimit = 15;
-      else if (brandObj.tier === "mid") modelLimit = 8;
+      if (brandObj.tier === "top") modelLimit = 35;
+      else if (brandObj.tier === "mid") modelLimit = 20;
     }
     
     models = models.filter(m => !m.startsWith("Other")).slice(0, modelLimit);

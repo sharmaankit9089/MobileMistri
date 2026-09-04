@@ -19,6 +19,8 @@ import ModelPage from "./pages/ModelPage";
 import Book from "./pages/Book";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
+import PrivacyPolicy from "./pages/Privacy";
+import TermsOfService from "./pages/Terms";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
@@ -61,6 +63,8 @@ function App() {
           <Route path="/book" element={<Shell><Book /></Shell>} />
           <Route path="/about" element={<Shell><About /></Shell>} />
           <Route path="/faq" element={<Shell><FAQ /></Shell>} />
+          <Route path="/privacy" element={<Shell><PrivacyPolicy /></Shell>} />
+          <Route path="/terms" element={<Shell><TermsOfService /></Shell>} />
           <Route path="/admin/login" element={<Shell><AdminLogin /></Shell>} />
           <Route path="/admin" element={<Shell><RequireAdmin><AdminDashboard /></RequireAdmin></Shell>} />
           <Route path="*" element={<Shell><NotFound /></Shell>} />

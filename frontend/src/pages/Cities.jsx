@@ -19,7 +19,7 @@ export default function Cities() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "MobileMistri Service Cities",
-    "description": "Doorstep mobile repair available across 10 major Indian cities",
+    "description": "Doorstep mobile repair available across 11 major Indian cities",
     "itemListElement": content.cities.map((c, i) => ({
       "@type": "ListItem",
       "position": i + 1,
@@ -39,7 +39,7 @@ export default function Cities() {
         <h1 className="mt-2 font-display text-4xl md:text-6xl font-semibold" style={{ color: "var(--mm-navy)" }}>
           We come to you. All over India.
         </h1>
-        <p className="mt-4 text-slate-600 max-w-2xl">Currently live in 10 cities. Our verified technicians reach every major pincode in each service area.</p>
+        <p className="mt-4 text-slate-600 max-w-2xl">Currently live in 11 cities. Our verified technicians reach every major pincode in each service area.</p>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
           {content.cities.map((c) => (
             <Link key={c.slug} to={`/city/${c.slug}`} data-testid={`cities-card-${c.slug}`} className="mm-card p-6 flex items-start gap-4">

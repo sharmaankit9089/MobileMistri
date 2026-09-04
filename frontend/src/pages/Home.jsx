@@ -24,7 +24,7 @@ const LOCAL_BUSINESS_SCHEMA = {
   "url": "https://www.mobilemistri.com/",
   "telephone": "+919650061347",
   "priceRange": "₹₹",
-  "description": "India's trusted doorstep mobile repair service. Expert technicians for iPhone, Samsung, OnePlus, Xiaomi, Google Pixel & more across 10 cities.",
+  "description": "India's trusted doorstep mobile repair service. Expert technicians for iPhone, Samsung, OnePlus, Xiaomi, Google Pixel & more across 11 cities.",
   "areaServed": [
     "Delhi", "Noida", "Gurgaon", "Ghaziabad", "Faridabad",
     "Hyderabad", "Bangalore", "Pune", "Mumbai", "Chennai"
@@ -73,7 +73,7 @@ const FAQ_SCHEMA = {
     {
       "@type": "Question",
       "name": "Which cities do you serve?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Delhi, Noida, Gurgaon, Ghaziabad, Faridabad, Hyderabad, Bangalore, Pune, Mumbai, and Chennai — with more cities launching soon." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Delhi, Noida, Gurgaon, Ghaziabad, Faridabad, Hyderabad, Bangalore, Pune, Mumbai, Chennai, and Lucknow — with more cities launching soon." }
     },
     {
       "@type": "Question",
@@ -352,7 +352,7 @@ export default function Home() {
               In today's fast-paced digital world, a broken smartphone can bring your entire day to a halt. We understand the urgency of getting your device back online. <strong>MobileMistri</strong> is India's leading doorstep mobile repair service, offering same-day smartphone repair near you. Whether you are dealing with a shattered screen, a rapidly draining battery, a malfunctioning charging port, or even severe liquid damage, our certified mobile mechanics are equipped to handle it all right in front of your eyes.
             </p>
             <p className="text-zinc-600 mb-4">
-              Our mobile repair network spans across 10 major Indian cities including Delhi, Noida, Gurgaon, Bangalore, Mumbai, Pune, and Hyderabad. By bringing the mobile service center to you, we eliminate the hassle of commuting through traffic and waiting for days to get your cell phone fixed. We specialize in mobile repairing for all major brands such as <strong>Apple iPhone, Samsung Galaxy, OnePlus, Xiaomi, Google Pixel, Motorola, and Realme</strong>. 
+              Our mobile repair network spans across 11 major Indian cities including Delhi, Noida, Gurgaon, Bangalore, Mumbai, Pune, and Hyderabad. By bringing the mobile service center to you, we eliminate the hassle of commuting through traffic and waiting for days to get your cell phone fixed. We specialize in mobile repairing for all major brands such as <strong>Apple iPhone, Samsung Galaxy, OnePlus, Xiaomi, Google Pixel, Motorola, and Realme</strong>. 
             </p>
             <h3 className="text-2xl font-display text-zinc-900 mt-8 mb-4">Why MobileMistri is the Industry Standard for Phone Repair</h3>
             <p className="text-zinc-600 mb-4">

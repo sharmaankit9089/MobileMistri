@@ -106,6 +106,10 @@ export const CITY_SEO_DATA = {
     areas: ["T Nagar", "Velachery", "Anna Nagar", "Adyar", "OMR"],
     local_text: "{Expert|Professional} mobile repairs delivered to your {doorstep|location} across Chennai, saving you a trip to Ritchie Street.",
   },
+  lucknow: {
+    areas: ["Gomti Nagar", "Hazratganj", "Alambagh", "Indira Nagar", "Mahanagar"],
+    local_text: "{Bringing|Delivering} {expert|professional|reliable} mobile repairs to the City of Nawabs. From Gomti Nagar to Alambagh, our technicians provide {fast|quick|swift} doorstep service without the hassle of visiting Naza Market.",
+  },
 };
 
 export const CITY_ARTICLE_SPINTAX = `

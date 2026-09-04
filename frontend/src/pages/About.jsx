@@ -16,7 +16,7 @@ const ORG_SCHEMA = {
   "name": "MobileMistri",
   "legalName": "Ring N Relax Services Pvt. Ltd.",
   "url": "https://www.mobilemistri.com/",
-  "description": "India's most trusted doorstep mobile repair brand. Verified technicians, genuine OEM-grade parts, transparent pricing and 6–12 month service warranty across 10 cities.",
+  "description": "India's most trusted doorstep mobile repair brand. Verified technicians, genuine OEM-grade parts, transparent pricing and 6–12 month service warranty across 11 cities.",
   "foundingDate": "2022",
   "logo": {
     "@type": "ImageObject",

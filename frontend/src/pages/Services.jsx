@@ -13,7 +13,7 @@ export default function Services() {
   // useSEO must be called before any early returns (Rules of Hooks)
   useSEO({
     title: "Mobile Repair Services | Screen, Battery, Water Damage & More | MobileMistri",
-    description: "Doorstep mobile repair services: screen replacement, battery replacement, charging port, back glass, water damage recovery, speaker/mic/camera & motherboard repairs. Genuine parts, 6–12 month warranty across 10 Indian cities.",
+    description: "Doorstep mobile repair services: screen replacement, battery replacement, charging port, back glass, water damage recovery, speaker/mic/camera & motherboard repairs. Genuine parts, 6–12 month warranty across 11 Indian cities.",
     canonical: "https://www.mobilemistri.com/services",
   });
 
